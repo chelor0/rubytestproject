@@ -2,7 +2,7 @@
 <p>Find me in app/views/people/index.html.erb</p>
 
 <ul>
-<%= @people.each do |person| %>
-	<li><%= person %></li>
+<% @people.each do |person| %>
+	<li><%= link_to person, person_url(person) %></li>
 <% end %>
 </ul>
