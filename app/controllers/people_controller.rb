@@ -1,5 +1,7 @@
 class PeopleController < ApplicationController
   
+  before_action :authenticate, :only => :show
+   
   def index
     @people = [
       'luke-skywalker',
@@ -7,4 +9,15 @@ class PeopleController < ApplicationController
     ]
   end
   
+  def show
+    @person = params[:id]
+  end 
+  
+  private
+  
+  def authenticate
+    if params[:id] == "darth-vader"
+      redirect_to people_path, :notice => "That page is restricted"
+    end  
+  end
 end
